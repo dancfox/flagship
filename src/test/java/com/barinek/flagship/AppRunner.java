@@ -8,7 +8,7 @@ public class AppRunner {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        app = new App();
+        app = new App(new Environment("test"));
         app.start();
     }
 
