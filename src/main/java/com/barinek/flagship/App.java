@@ -19,7 +19,7 @@ public class App {
     private final Server server;
 
     public App(Environment environment) throws Exception {
-        Injector injector = Guice.createInjector(environment, new ResourceModule());
+        Injector injector = Guice.createInjector(environment, new DataSourceModule(), new ResourceModule());
 
         server = new Server(8080);
         ServletContextHandler context = new ServletContextHandler(server, "/", ServletContextHandler.NO_SESSIONS);

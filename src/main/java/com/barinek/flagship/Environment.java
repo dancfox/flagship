@@ -1,6 +1,7 @@
 package com.barinek.flagship;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Key;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,6 +10,8 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.google.inject.name.Names.named;
 
 public class Environment extends AbstractModule {
     private static final Logger logger = LoggerFactory.getLogger(Environment.class);
@@ -21,6 +24,8 @@ public class Environment extends AbstractModule {
 
     @Override
     protected void configure() {
+        bind(Key.get(String.class, named("mybatis.environment.id"))).toInstance(properties.getProperty("mybatis.environment.id"));
+        bind(Key.get(String.class, named("JDBC.url"))).toInstance(properties.getProperty("jdbc.url"));
     }
 
     private Properties getProperties(String file) throws IOException {
