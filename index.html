@@ -36,7 +36,7 @@
 
 <p>The "Flagship" Java project is inspired by the recent buzz around <a href="http://12factor.net">12factor applications</a> and <a href="http://12factor.net">Microservices</a>.</p>
 
-<p>The example is slightly more inspired by the notion that everyone should understand how to build Microservices from scratch with just a few dependencies. Most of the recent apps I've build tend to start with the basic concepts and app structure described below. There are also several open source projects that start with similar foundations; <a href="http://projects.spring.io/spring-boot/">Spring Boot</a> and <a href="http://dropwizard.io/">Dropwizard</a> are a few examples.</p>
+<p>The example is slightly more inspired by the notion that everyone should understand how to build Microservices from scratch with just a few dependencies. Most of the recent apps I've built tend to start with the basic concepts and app structure described below. There are also several open source projects that start with similar foundations; <a href="http://projects.spring.io/spring-boot/">Spring Boot</a> and <a href="http://dropwizard.io/">Dropwizard</a> are a few examples.</p>
 
 <p>As applications grow (multiple apps, multiple services), I'm also a slight fan of having all the services or components within large systems reside in a single, versioned repo.</p>
 
@@ -57,14 +57,28 @@ v0.5            Basic persistence with MyBatis and MySQL
 <h3>
 <a id="initial-app" class="anchor" href="#initial-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initial App</h3>
 
+<p>The v0.1 tag starts with a simple Java class - App.java. The App includes both start and stop methods as well as an initial test class. The test class extends AppRunner which will be used for both integration and acceptance tests.</p>
+
+<p>I've used maven as the build tool with a plugin for shaded jars.</p>
+
+<p>Current dependencies are slf4j and junit.</p>
+
 <h3>
 <a id="introducing-guice-and-app-environments" class="anchor" href="#introducing-guice-and-app-environments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introducing Guice and App Environments</h3>
+
+<p>v0.2 makes a slight nod to Agile web development and Rails by introducing Development, Test, and Production environments. The Environment class leverages both Java property files and local env variables. Loading config settings via operating system <em>environment variables</em> is a characteristic of <a href="http://12factor.net/config">12factor apps</a>. The Environment is injected via Guice.</p>
+
+<p>New dependencies include just Guice.</p>
 
 <h3>
 <a id="introducing-jetty-and-jersey" class="anchor" href="#introducing-jetty-and-jersey" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introducing Jetty and Jersey</h3>
 
+<p>New dependencies include Jersey and Jetty.</p>
+
 <h3>
 <a id="basic-persistence-with-mybatis-and-mysql" class="anchor" href="#basic-persistence-with-mybatis-and-mysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic persistence with MyBatis and MySQL</h3>
+
+<p>New dependencies include MyBatis and MySQL.</p>
 
 <p>Thanks! (<a href="https://github.com/barinek" class="user-mention">@barinek</a>)</p>
       </section>
