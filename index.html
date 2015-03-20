@@ -77,7 +77,7 @@ v0.5            Basic persistence with MyBatis and MySQL
 
 <p>You'll need to understand a bit about event listeners and filters - essentially the <a href="https://jcp.org/aboutJava/communityprocess/final/jsr315/">servlet specification</a> - to fullly grasp the lines 24-25 in the App class. At a high level, the Listener class enables Jetty with Guice support and the ResourceModule class describes the available REST endpoints via classes and annotations. FWIW - I always recommend reading the servlet spec if you're a serious Java developer - or at a minimum having at least one person on your team that has read the spec ;)</p>
 
-<p>I've penciled in a RESTful NoopController that uses the javax.ws.rs package and simply returns plain text. The next tag will support the JSON media type. Note, the AppTest now becomes more interesting leveraging apache http components for acceptance tests which via <em>mvn clean install</em>.</p>
+<p>I've penciled in a RESTful NoopController that uses the javax.ws.rs package and simply returns plain text. The next tag will support the JSON media type. Note, the AppTest now becomes more interesting leveraging apache http components for acceptance tests which run via <em>mvn clean install</em>.</p>
 
 <p>New dependencies include Jersey and Jetty.</p>
 
