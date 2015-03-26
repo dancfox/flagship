@@ -36,7 +36,7 @@
 
 <p>The <strong>Flagship</strong> project is inspired by the recent buzz around <a href="http://12factor.net">twelve-factor applications</a> and <a href="http://12factor.net">Microservices</a>. The project is intended to show that it is fairly easy to build modern RESTful services with just a few dependencies.</p>
 
-<p>The project highlights a few twelve-factor characteristics -</p>
+<p>While building the service, I've highlighted a few characteristics of twelve-factor apps -</p>
 
 <ul>
 <li>Explicitly declare and isolate dependencies</li>
@@ -48,7 +48,7 @@
 
 <p>Twelve-factor apps aside, this example is slightly more inspired by the notion that everyone should understand how to build Microservices from scratch with just a few dependencies. Most of the recent server-side apps I've built tend to start with the basic concepts and app structure described below. There are also several open source projects that start with similar foundations; <a href="http://projects.spring.io/spring-boot/">Spring Boot</a>, <a href="https://github.com/Netflix/pytheas">Netflix Pytheas</a> and <a href="http://dropwizard.io/">Dropwizard</a> are a few examples.</p>
 
-<p>Understanding the building blocks will help you understand your chosen framework. Additionally, I hope that it illustrates that there are a variety of options for each building block in the web stack. For example, the project uses Mybatis for data access although, could have just as easily use JPA or Spring JDBC templates. [DJ]</p>
+<p>Understanding the building blocks will help you understand your chosen framework. Additionally, I hope that it illustrates that there are a variety of options for each building block in the web stack. For example, the project uses Mybatis for data access although, could have just as easily use JPA or Spring JDBC templates. DJ*</p>
 
 <p>As applications grow (multiple apps, multiple services), I'm also a slight fan of having all the services or components within large systems reside in a single, versioned repo although, I'll save that conversation for a future example.</p>
 
@@ -69,7 +69,7 @@ v0.5            Basic persistence with MyBatis and MySQL
 <h3>
 <a id="v01-initial-app" class="anchor" href="#v01-initial-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>(v0.1) Initial App</h3>
 
-<p>The v0.1 tag starts with a simple Java class - App.java. The App includes both start and stop methods as well as an initial test class. The test class extends AppRunner which will be used for both integration and acceptance tests.</p>
+<p>The v0.1 tag starts with a simple Java class, App.java. The App includes both start and stop methods as well as an initial test class. The test class extends AppRunner which will be used for both integration and acceptance tests.</p>
 
 <p>I'm using Maven's pom file for <strong>dependency declaration</strong> and <code>java -jar</code> for <strong>dependency isolation</strong>. In fact, all the dependencies are "vendored" via maven within a single shaded jar.</p>
 
@@ -78,7 +78,9 @@ v0.5            Basic persistence with MyBatis and MySQL
 <h3>
 <a id="v02-introducing-guice-and-app-environments" class="anchor" href="#v02-introducing-guice-and-app-environments" aria-hidden="true"><span class="octicon octicon-link"></span></a>(v0.2) Introducing Guice and App Environments</h3>
 
-<p>v0.2 makes a slight nod to Agile web development and Rails by introducing Development, Test, and Production environments. The Environment class leverages both Java property files <strong>and</strong> local env variables. <strong>Storing the config the environment</strong> is a characteristic of <a href="http://12factor.net/config">twelve-factor apps</a> although, bundled environments are in slight contrast with twelve-factor apps. I've found that using the 2 in conjunction hasn't introduced config explosion or brittleness over the years.</p>
+<p>v0.2 makes a slight nod to Agile web development and Rails by introducing Development, Test, and Production environments. The Environment class leverages both Java property files and local environment variables. <strong>Storing the config the environment</strong> is a characteristic of <a href="http://12factor.net/config">twelve-factor apps</a>.</p>
+
+<p><em>I understand bundled environments are in slight contrast with twelve-factor apps although, I've found that using the 2 patterns in conjunction hasn't introduced config explosion or brittleness over the years.</em></p>
 
 <p>The Environment is injected via Guice although, Spring would have worked just as easily. New dependencies include Guice.</p>
 
@@ -110,6 +112,10 @@ v0.5            Basic persistence with MyBatis and MySQL
 <p>New dependencies include MyBatis and MySQL.</p>
 
 <p>Thanks! (<a href="https://github.com/barinek" class="user-mention">@barinek</a>)</p>
+
+<ul>
+<li>Thanks to (<a href="https://github.com/dajulia3" class="user-mention">@dajulia3</a>) for the copy edit</li>
+</ul>
       </section>
     </div>
 
