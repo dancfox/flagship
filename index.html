@@ -71,14 +71,14 @@ v0.5            Basic persistence with MyBatis and MySQL
 
 <p>The v0.1 tag starts with a simple Java class, App.java. The App includes both start and stop methods as well as an initial test class. The test class extends AppRunner which will be used for both integration and acceptance tests.</p>
 
-<p>I'm using Maven's pom file for <strong>dependency declaration</strong> and <code>java -jar</code> for <strong>dependency isolation</strong>. In fact, all the dependencies are "vendored" via maven within a single shaded jar.</p>
+<p>I'm using Maven's pom file for dependency declaration and java -jar for dependency isolation. In fact, all the dependencies are "vendored" via maven within a single shaded jar.</p>
 
 <p>Current dependencies are slf4j and junit.</p>
 
 <h3>
 <a id="v02-introducing-guice-and-app-environments" class="anchor" href="#v02-introducing-guice-and-app-environments" aria-hidden="true"><span class="octicon octicon-link"></span></a>(v0.2) Introducing Guice and App Environments</h3>
 
-<p>v0.2 makes a slight nod to Agile web development and Rails by introducing Development, Test, and Production environments. The Environment class leverages both Java property files and local environment variables. <strong>Storing the config the environment</strong> is a characteristic of <a href="http://12factor.net/config">twelve-factor apps</a>.</p>
+<p>v0.2 makes a slight nod to Agile web development and Rails by introducing Development, Test, and Production environments. The Environment class leverages both Java property files and local environment variables. Storing the config the environment is a characteristic of <a href="http://12factor.net/config">twelve-factor apps</a>.</p>
 
 <p><em>I understand bundled environments are in slight contrast with twelve-factor apps although, I've found that using the 2 patterns in conjunction hasn't introduced config explosion or brittleness over the years.</em></p>
 
@@ -87,13 +87,13 @@ v0.5            Basic persistence with MyBatis and MySQL
 <h3>
 <a id="v03-introducing-jetty-and-jersey" class="anchor" href="#v03-introducing-jetty-and-jersey" aria-hidden="true"><span class="octicon octicon-link"></span></a>(v0.3) Introducing Jetty and Jersey</h3>
 
-<p>I've used the Guice Servlet lib and Jersey's Guice contribs in conjunction with Jetty (Guice and Jersey) to stitch together the server component. I'll typically pull in Jetty (by habit) although, Netty and Tomcat are also great choices. Line 24 illustrates <strong>exporting HTTP as a service by binding to a port</strong>; in this case, Jetty is bound to <code>port 8080</code>.</p>
+<p>I've used the Guice Servlet lib and Jersey's Guice contribs in conjunction with Jetty (Guice and Jersey) to stitch together the server component. I'll typically pull in Jetty (by habit) although, Netty and Tomcat are also great choices. Line 24 illustrates exporting HTTP as a service by binding to a port; in this case, Jetty is bound to port 8080.</p>
 
 <p>You'll need to understand a bit about event listeners and filters - essentially the <a href="https://jcp.org/aboutJava/communityprocess/final/jsr315/">servlet specification</a> - to fullly grasp the lines 24-25 in the App class. At a high level, the Listener class enables Jetty with Guice support and the ResourceModule class describes the available REST endpoints via classes and annotations. FWIW - I always recommend reading the servlet spec if you're a serious Java developer - or at a minimum having at least one person on your team that has read the spec ;)</p>
 
 <p>I've penciled in a RESTful NoopController that uses the javax.ws.rs package and simply returns plain text. The next tag will support the JSON media type. Note, the AppTest now becomes more interesting leveraging apache http components for acceptance tests which run via <em>mvn clean install</em>.</p>
 
-<p><strong>The new code allows for fast startup and graceful shutdown via the shutdown hook.</strong> New dependencies include Jersey and Jetty.</p>
+<p>The new code allows for fast startup via embedded Jetty and a graceful shutdown via the Java's Runtime shutdown hook. New dependencies include Jersey and Jetty.</p>
 
 <h3>
 <a id="v04-introducing-healthchecks-and-jackson" class="anchor" href="#v04-introducing-healthchecks-and-jackson" aria-hidden="true"><span class="octicon octicon-link"></span></a>(v0.4) Introducing HealthChecks and Jackson</h3>
