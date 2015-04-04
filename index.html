@@ -75,6 +75,9 @@ v0.5            Basic persistence with MyBatis and MySQL
 
 <p>Current dependencies are slf4j and junit.</p>
 
+<pre><code>$ java -jar target/flagship-1.0-SNAPSHOT.jar 
+</code></pre>
+
 <h3>
 <a id="v02-introducing-guice-and-app-environments" class="anchor" href="#v02-introducing-guice-and-app-environments" aria-hidden="true"><span class="octicon octicon-link"></span></a>(v0.2) Introducing Guice and App Environments</h3>
 
@@ -83,6 +86,10 @@ v0.5            Basic persistence with MyBatis and MySQL
 <p>I understand bundled environments are in slight contrast with twelve-factor apps although, I've found that using the 2 patterns in conjunction hasn't introduced config explosion or brittleness over the years.</p>
 
 <p>The Environment is injected via Guice although, Spring would have worked just as easily. New dependencies include Guice.</p>
+
+<pre><code>$ export application_environment=development
+$ java -jar target/flagship-1.0-SNAPSHOT.jar 
+</code></pre>
 
 <h3>
 <a id="v03-introducing-jetty-and-jersey" class="anchor" href="#v03-introducing-jetty-and-jersey" aria-hidden="true"><span class="octicon octicon-link"></span></a>(v0.3) Introducing Jetty and Jersey</h3>
@@ -110,6 +117,11 @@ v0.5            Basic persistence with MyBatis and MySQL
 <p>The last tag includes a Project model, controller, and data access object. The test directory includes both integration and acceptance tests for the GET Projects endpoint. The README.md file includes manual instructions for setting up your local database. It also makes a few assumptions around naming conventions.</p>
 
 <p>New dependencies include MyBatis and MySQL.</p>
+
+<pre><code>$ export application_environment=production
+$ export DATABASE_URL='jdbc:mysql://localhost:3306/flagship_development?user=flagship&amp;password=flagship'
+$ java -jar target/flagship-1.0-SNAPSHOT.jar 
+</code></pre>
 
 <h3>
 <a id="summary" class="anchor" href="#summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary</h3>
