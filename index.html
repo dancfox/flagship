@@ -75,7 +75,9 @@ v0.5            Basic persistence with MyBatis and MySQL
 
 <p>Current dependencies are slf4j and junit.</p>
 
-<pre><code>$ java -jar target/flagship-1.0-SNAPSHOT.jar 
+<p>Run the app -</p>
+
+<pre><code>$ java -jar target/flagship-1.0-SNAPSHOT.jar
 </code></pre>
 
 <h3>
@@ -87,8 +89,10 @@ v0.5            Basic persistence with MyBatis and MySQL
 
 <p>The Environment is injected via Guice although, Spring would have worked just as easily. New dependencies include Guice.</p>
 
+<p>Run the app -</p>
+
 <pre><code>$ export application_environment=development
-$ java -jar target/flagship-1.0-SNAPSHOT.jar 
+$ java -jar target/flagship-1.0-SNAPSHOT.jar
 </code></pre>
 
 <h3>
@@ -117,6 +121,8 @@ $ java -jar target/flagship-1.0-SNAPSHOT.jar
 <p>The last tag includes a Project model, controller, and data access object. The test directory includes both integration and acceptance tests for the GET Projects endpoint. The README.md file includes manual instructions for setting up your local database. It also makes a few assumptions around naming conventions.</p>
 
 <p>New dependencies include MyBatis and MySQL.</p>
+
+<p>Run the app -</p>
 
 <pre><code>$ export application_environment=production
 $ export DATABASE_URL='jdbc:mysql://localhost:3306/flagship_development?user=flagship&amp;password=flagship'
