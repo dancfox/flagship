@@ -98,7 +98,7 @@ v0.5            Basic persistence with MyBatis and MySQL
 <h3>
 <a id="v04-introducing-healthchecks-and-jackson" class="anchor" href="#v04-introducing-healthchecks-and-jackson" aria-hidden="true"><span class="octicon octicon-link"></span></a>(v0.4) Introducing HealthChecks and Jackson</h3>
 
-<p>Production support is always interesting - and, with a modern <a href="http://en.wikipedia.org/wiki/Platform_as_a_service">PaaS</a>, support becomes slightly easier. I've created a BasicHealthCheck to return app specific health; memory usage, connected sub-systems, etc. <a href="http://en.wikipedia.org/wiki/Java_Management_Extensions">JMX</a> also works well although, the HealthCheck provides a nice step to introduce Jackson for JSON responses.</p>
+<p>Production support is always interesting - and, with a modern <a href="http://en.wikipedia.org/wiki/Platform_as_a_service">PaaS</a>, support becomes much easier. I've created a BasicHealthCheck to return app specific health; memory usage, connected sub-systems, etc. <a href="http://en.wikipedia.org/wiki/Java_Management_Extensions">JMX</a> also works well although, the HealthCheck provides a nice step to introduce Jackson for JSON responses.</p>
 
 <p>New dependencies include Jackson.</p>
 
@@ -110,6 +110,11 @@ v0.5            Basic persistence with MyBatis and MySQL
 <p>The last tag includes a Project model, controller, and data access object. The test directory includes both integration and acceptance tests for the GET Projects endpoint. The README.md file includes manual instructions for setting up your local database. It also makes a few assumptions around naming conventions.</p>
 
 <p>New dependencies include MyBatis and MySQL.</p>
+
+<h3>
+<a id="summary" class="anchor" href="#summary" aria-hidden="true"><span class="octicon octicon-link"></span></a>Summary</h3>
+
+<p>I hope the example helps and illustrates that you could create a twelve-factor microservice from scratch with a few basic dependencies.</p>
 
 <p>Thanks! (<a href="https://github.com/barinek" class="user-mention">@barinek</a>) and thanks to (<a href="https://github.com/dajulia3" class="user-mention">@dajulia3</a>) for the copy edit!</p>
       </section>
