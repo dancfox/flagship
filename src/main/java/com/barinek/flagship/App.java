@@ -17,11 +17,17 @@ import java.util.List;
 public class App {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
     private final Server server;
+    private static final String LOCALHOST_PORT = "8080";
 
     public App(Environment environment) throws Exception {
         Injector injector = Guice.createInjector(environment, new DataSourceModule(), new ResourceModule());
 
-        server = new Server(8080);
+        String webPort = System.getenv("PORT");
+        if (webPort == null || webPort.isEmpty()) {
+            webPort = LOCALHOST_PORT;
+        }
+
+        server = new Server(Integer.parseInt(webPort));
         ServletContextHandler context = new ServletContextHandler(server, "/", ServletContextHandler.NO_SESSIONS);
         context.addEventListener(new Listener(injector));
         context.addFilter(GuiceFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST));
