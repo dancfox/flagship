@@ -14,11 +14,17 @@ import static org.junit.Assert.assertEquals;
 public class AppTest extends AppRunner {
     @Test
     public void basicApp() throws IOException {
+
         HttpClient httpclient = new DefaultHttpClient();
-        HttpGet httpget = new HttpGet("http://localhost:8080");
-        ResponseHandler<String> responseHandler = new BasicResponseHandler();
-        String responseBody = httpclient.execute(httpget, responseHandler);
-        assertEquals("Noop!", responseBody);
+
+        try {
+            HttpGet httpget = new HttpGet("http://localhost:8080");
+            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+            String responseBody = httpclient.execute(httpget, responseHandler);
+            assertEquals("Noop!", responseBody);
+        } finally {
+            httpclient.getConnectionManager().shutdown();
+        }
     }
 }
 
